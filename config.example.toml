@@ -1,0 +1,28 @@
+# HealthAnalyzer Configuration
+#
+# Copy this file to config.toml and fill in your values.
+# API keys can also be set via environment variables:
+#   HEALTHANALYZER_COMPLETION_API_KEY
+#   HEALTHANALYZER_EMBEDDING_API_KEY
+
+[completion]
+# Provider for text generation: "openai", "anthropic", "ollama"
+provider = "openai"
+api_key  = ""
+model    = ""
+# base_url = "http://localhost:11434"  # uncomment for Ollama
+
+[embedding]
+# Provider for vector embeddings: "openai", "ollama"
+# Note: Anthropic does not offer embeddings, use OpenAI or Ollama.
+provider = "openai"
+api_key  = ""
+model    = ""
+# base_url = "http://localhost:11434"  # uncomment for Ollama
+
+[storage]
+db_path = "healthanalyzer.db"
+
+[server]
+port    = 8080
+timeout = "30s"
