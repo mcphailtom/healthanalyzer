@@ -1,7 +1,38 @@
-1. The project uses a Go, HTMX, Bubbletea stack with SQLlite for persistence.
-2. Code should be succint, idiomatic and use as few external dependecies as possible
-3. Documentation comments should be used as required but not as a replacement for readable code
-4. All documentation lives in the docs folder and should be short and well scoped to a feature or problem
-5. Unit tests use testify and mockery where needed and should use the testify suite constructs and table tests where possible
-6. All code needs test coverage where practical and tests are to test requirements and should not be altered to make edge cases work rather the code needs to satisfy the requirments
-7. All feature work should occur on a new branch with PRs to main.
+# Agent Guidelines
+
+Conventions and standards for working in this codebase.
+
+## Stack
+
+- **Language**: Go
+- **Persistence**: SQLite (with sqlite-vec for vector search)
+- **Web UI**: HTMX with Go `html/template`
+- **TUI**: Bubbletea / Lipgloss
+- **Build**: CGo required (SQLite driver)
+
+## Code Style
+
+- Write succinct, idiomatic Go. Favour clarity over cleverness.
+- Minimise external dependencies. Prefer the standard library where practical.
+- Use documentation comments where they add value, not as a substitute for readable code. If a comment restates what the code already says, remove it.
+- Keep functions short and focused. If a function needs a comment explaining its flow, it should probably be split.
+
+## Project Structure
+
+- All application code lives under `internal/`.
+- CLI entrypoints live under `cmd/`.
+- Documentation lives in `docs/` and should be short, well-scoped to a single feature or concern, and kept up to date with implementation.
+
+## Testing
+
+- Use `testify` for assertions and suite constructs.
+- Use `mockery` for generating mocks where needed.
+- Prefer table-driven tests for functions with multiple input/output cases.
+- Tests exist to verify requirements. If a test fails, fix the code to satisfy the requirement -- do not weaken the test to accommodate an edge case.
+- All code should have test coverage where practical.
+
+## Workflow
+
+- All feature work occurs on a dedicated branch with a pull request to `main`.
+- Commits should be atomic and descriptive. Favour smaller, well-scoped PRs over large changesets.
+- Ensure the project compiles and passes `go vet` before committing.
